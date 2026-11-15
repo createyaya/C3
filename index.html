@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me &amp; The Radiant Firmament</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* ===== 黑色顶栏：品牌Logo + 主导航（样式沿用原站） ===== */
+        .site-header {
+            background-color: #000;
+            padding: 18px 0 0;
+            position: fixed; /* 大黑条固定在最上方，完全不参与滚动 */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        /* 正文白色部分：独立滚动空间 */
+        #site-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            overflow-y: auto;
+        }
+
+        .site-logo {
+            text-align: center;
+            color: #fff;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 26px;
+            font-style: italic;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 28px;
+            padding: 0 12px 14px;
+        }
+
+        .main-nav li {
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #fff;
+            transition: opacity 0.2s;
+            position: relative;
+            padding-bottom: 6px;
+        }
+
+        .main-nav li:hover {
+            opacity: 0.65;
+        }
+
+        .main-nav li.active {
+            font-weight: 500;
+        }
+
+        .main-nav li.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #fff;
+        }
+
+        /* ===== 栏目大标题 ===== */
+        .category-hero {
+            text-align: center;
+        }
+
+        .category-hero h1 {
+            font-size: 64px;
+            font-weight: normal;
+            margin: 0 auto;
+            max-width: 1470px;
+            padding: 54px 20px 40px;
+        }
+
+        /* 子导航（专题标题行） */
+        .sub-nav {
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        .sub-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 30px;
+        }
+
+        .sub-nav li {
+            cursor: pointer;
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 1.3;
+            letter-spacing: 0.08px;
+            color: #000;
+            transition: opacity 0.2s;
+        }
+
+        .sub-nav li:hover {
+            opacity: 0.55;
+        }
+
+        .sub-nav li.active {
+            text-decoration: underline;
+            text-underline-offset: 10px;
+            text-decoration-thickness: 3px;
+        }
+
+        /* ===== 卡片区容器 ===== */
+        .card-section {
+            max-width: 1470px;
+            margin: 0 auto;
+            padding: 0 45px;
+        }
+
+        .card-grid.row5 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .card-grid.row5 .brand-card {
+            width: 19%;
+            max-width: 280px;
+            margin-right: 1.25%;
+            margin-bottom: 38px;
+        }
+
+        .card-grid.row5 .brand-card:nth-child(5n) {
+            margin-right: 0;
+        }
+
+        /* ===== 卡片 ===== */
+        .brand-card {
+            cursor: pointer;
+        }
+
+        .brand-card .card-img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            object-fit: cover;
+            object-position: top;
+            background-color: #efefef;
+            transition: opacity 0.25s;
+            margin-bottom: 20px;
+        }
+
+        .brand-card:hover .card-img {
+            opacity: 0.8;
+        }
+
+        .brand-card .card-name {
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 0.08px;
+            text-align: center;
+            color: #000;
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            .site-logo {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .main-nav ul {
+                gap: 6px 16px;
+            }
+
+            .main-nav li {
+                font-size: 12px;
+            }
+
+            .category-hero h1 {
+                font-size: 32px;
+                padding: 40px 16px 30px;
+            }
+
+            .sub-nav li {
+                font-size: 16px;
+            }
+
+            .card-section {
+                padding: 0 20px;
+            }
+
+            .card-grid.row5 .brand-card {
+                width: 48%;
+                max-width: 320px;
+                margin-right: 0;
+                margin-bottom: 34px;
+            }
+
+            .brand-card .card-name {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 黑色顶栏：Logo + 主导航 -->
+    <header class="site-header">
+        <div class="site-logo">Me &amp; The Radiant Firmament</div>
+        <nav class="main-nav">
+            <ul>
+                <li data-category="work" class="active">工作</li>
+                <li data-category="life">生活</li>
+                <li data-category="family">家庭</li>
+                <li data-category="community">社群</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 栏目内容由JS按配置渲染 -->
+    <main id="site-main"></main>
+
+    <script>
+        // ===== 站点内容配置：想改名字/增删子页或卡片，改这里即可 =====
+        const SITE_DATA = {
+            work: {
+                navName: '工作',
+                hero: '工作',
+                subpages: [
+                    { name: '子页一', cards: ['卡片一', '卡片二', '卡片三', '卡片四', '卡片五'] },
+                    { name: '子页二', cards: ['卡片一', '卡片二', '卡片三', '卡片四', '卡片五'] }
+                ]
+            },
+            life: {
+                navName: '生活',
+                hero: '生活',
+                subpages: [
+                    { name: '子页一', cards: ['卡片一', '卡片二', '卡片三', '卡片四', '卡片五'] },
+                    { name: '子页二', cards: ['卡片一', '卡片二', '卡片三', '卡片四', '卡片五'] }
+                ]
+            },
+            family: {
+                navName: '家庭',
+                hero: '家庭',
+                subpages: [
+                    { name: '子页一', cards: ['卡片一', '卡片二', '卡片三', '卡片四', '卡片五'] },
+                    { name: '子页二', cards: ['卡片一', '卡片二', '卡片三', '卡片四', '卡片五'] }
+                ]
+            },
+            community: {
+                navName: '社群',
+                hero: '社群',
+                subpages: [
+                    { name: '子页一', cards: ['卡片一', '卡片二', '卡片三', '卡片四', '卡片五'] },
+                    { name: '子页二', cards: ['卡片一', '卡片二', '卡片三', '卡片四', '卡片五'] }
+                ]
+            }
+        };
+
+        // ===== 渲染 =====
+        const mainEl = document.getElementById('site-main');
+        const navItems = document.querySelectorAll('.main-nav li');
+
+        // 顶栏高度 → 正文滚动区顶部让位
+        function fitMainTop() {
+            const h = document.querySelector('.site-header').offsetHeight;
+            mainEl.style.top = h + 'px';
+            mainEl.style.bottom = '0';
+        }
+        window.addEventListener('resize', fitMainTop);
+        fitMainTop();
+
+        function renderCategory(key) {
+            const data = SITE_DATA[key];
+            if (!data) return;
+
+            // 大标题
+            let html = `
+                <section class="category-hero">
+                    <h1>${data.hero}</h1>
+                </section>`;
+
+            // 子导航
+            html += `
+                <nav class="sub-nav">
+                    <ul>
+                        ${data.subpages.map((sp, i) => `<li data-sub="${i}" class="${i === 0 ? 'active' : ''}">${sp.name}</li>`).join('')}
+                    </ul>
+                </nav>`;
+
+            // 卡片区（默认第一个子页）
+            html += renderSubpage(data.subpages[0]);
+
+            mainEl.innerHTML = html;
+            mainEl.scrollTop = 0;
+
+            // 子导航切换
+            mainEl.querySelectorAll('.sub-nav li').forEach(li => {
+                li.addEventListener('click', () => {
+                    mainEl.querySelectorAll('.sub-nav li').forEach(x => x.classList.remove('active'));
+                    li.classList.add('active');
+                    document.getElementById('sub-area').innerHTML = renderSubpage(data.subpages[+li.dataset.sub]);
+                });
+            });
+        }
+
+        function renderSubpage(sp) {
+            return `
+                <div id="sub-area">
+                    <section class="card-section">
+                        <div class="card-grid row5">
+                            ${sp.cards.map(c => `
+                                <div class="brand-card">
+                                    <img class="card-img" alt="${c}">
+                                    <div class="card-name">${c}</div>
+                                </div>`).join('')}
+                        </div>
+                    </section>
+                </div>`;
+        }
+
+        // 主导航切换
+        navItems.forEach(li => {
+            li.addEventListener('click', () => {
+                navItems.forEach(x => x.classList.remove('active'));
+                li.classList.add('active');
+                renderCategory(li.dataset.category);
+            });
+        });
+
+        // 初始渲染
+        renderCategory('work');
+    </script>
+</body>
+</html>
