@@ -17,11 +17,15 @@
             color: #000;
         }
 
-        /* ===== 黑色顶栏：品牌Logo + 主导航（样式沿用原站） ===== */
+        /* ===== 顶栏：品牌Logo + 主导航（底图取蒙克《太阳》中太阳与海面交界的横带） ===== */
         .site-header {
-            background-color: #000;
+            background-color: #f5e3b8; /* 图片未加载时的兜底色 */
+            background-image: url('images/sun.jpg');
+            background-size: cover;
+            /* 横幅油画取中部：太阳核心贴着海平线的交界带 */
+            background-position: center 40%;
             padding: 18px 0 0;
-            position: fixed; /* 大黑条固定在最上方，完全不参与滚动 */
+            position: fixed; /* 大条固定在最上方，完全不参与滚动 */
             top: 0;
             left: 0;
             right: 0;
@@ -40,6 +44,7 @@
         .site-logo {
             text-align: center;
             color: #fff;
+            text-shadow: 0 0 4px rgba(140, 90, 20, 0.55), 0 1px 10px rgba(140, 90, 20, 0.55); /* 亮色底上加深描影，保住白字可读性 */
             font-family: Georgia, "Times New Roman", serif;
             font-size: 26px;
             font-style: italic;
@@ -61,6 +66,7 @@
             font-size: 14px;
             letter-spacing: 1px;
             color: #fff;
+            text-shadow: 0 0 3px rgba(140, 90, 20, 0.55), 0 1px 8px rgba(140, 90, 20, 0.55);
             transition: opacity 0.2s;
             position: relative;
             padding-bottom: 6px;
